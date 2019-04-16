@@ -8,7 +8,6 @@ self.addEventListener('install', function(event) {
         'index.html',
         './', // Alias for index.html
         './css/style.min.css',
-        './js/sw.js',
         './js/index.min.js',
         './svg/settings.svg'
       ]);
