@@ -9,7 +9,8 @@ self.addEventListener('install', function(event) {
         './', // Alias for index.html
         './css/style.min.css',
         './js/sw.js',
-        './js/index.min.js'
+        './js/index.min.js',
+        './svg/settings.svg'
       ]);
   }).then(function() {
     self.skipWaiting();
@@ -29,7 +30,7 @@ self.addEventListener('activate', function(event) {
     }).then(function() {self.clients.claim() }));
 });
 self.addEventListener('fetch', function(event) {
-  if (event.request.url.startsWith(self.location.origin)) {
+  if (event.request.url.startsWith(self.location.origin) || event.request.url.indexOf('fonts') !== -1) {
     event.respondWith(
       caches.match(event.request).then(function(cachedResponse) {
         if (cachedResponse) {
