@@ -29,7 +29,7 @@ self.addEventListener('activate', function(event) {
     }).then(function() {self.clients.claim() }));
 });
 self.addEventListener('fetch', function(event) {
-  // if (event.request.url.startsWith(self.location.origin)) {
+  if (event.request.url.startsWith(self.location.origin)) {
     event.respondWith(
       caches.match(event.request).then(function(cachedResponse) {
         if (cachedResponse) {
@@ -45,5 +45,5 @@ self.addEventListener('fetch', function(event) {
         });
       })
     );
-  // }
+  }
 });
